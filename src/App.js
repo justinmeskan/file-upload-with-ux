@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
 
-function App() {
+
+const Input = (props) => (
+  <input type='file' name='file-input' multiple {...props} />
+)
+
+
+const App = () => {
+  const onSubmit = (e) => {
+    e.preventDefault()
+  }
+
+  
+  const onChange = (e) => {
+    console.log(e.target.files)
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <form className='form' onSubmit={onSubmit}>
+        <div>
+          <Input onChange={onChange} />
+          <button type='submit'>Submit</button>
+        </div>
+      </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
